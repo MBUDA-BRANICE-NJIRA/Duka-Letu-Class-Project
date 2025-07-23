@@ -1,14 +1,47 @@
 import 'package:flutter/material.dart';
+// Import our custom colors
+import '../contants/app_colors.dart';
 
 // HomeScreen class - This is a StatelessWidget because it doesn't change over time
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  // Add parameters to receive the toggle function and current theme state
+  final VoidCallback toggleTheme;
+  final bool isDarkMode;
+  
+  const HomeScreen({
+    super.key,
+    required this.toggleTheme,
+    required this.isDarkMode,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // Scaffold provides the basic structure for a screen (like app bar, body, etc.)
-      backgroundColor: Colors.grey[100], // Sets a light grey background color
+      backgroundColor: isDarkMode 
+          ? AppColors.darkBackground    // Dark background for dark mode
+          : AppColors.lightBackground,  // Light background for light mode
+      
+      // APP BAR with theme toggle button
+      appBar: AppBar(
+        title: const Text('Duka Letu'),
+        backgroundColor: isDarkMode 
+            ? AppColors.darkSurface 
+            : AppColors.lightSurface,
+        foregroundColor: isDarkMode 
+            ? AppColors.darkText 
+            : AppColors.lightText,
+        actions: [
+          // THEME TOGGLE BUTTON
+          IconButton(
+            onPressed: toggleTheme, // Call the toggle function when pressed
+            icon: Icon(
+              isDarkMode ? Icons.light_mode : Icons.dark_mode, // Change icon based on current theme
+            ),
+            tooltip: isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode',
+          ),
+        ],
+      ),
       
       // Center widget ensures everything inside is centered on the screen
       body: Center(
@@ -23,12 +56,14 @@ class HomeScreen extends StatelessWidget {
             children: [
               
               // MAIN TITLE - Welcome message
-              const Text(
+              Text(
                 'Welcome to Duka Letu',
                 style: TextStyle(
-                  fontSize: 28,              // Large text size for title
-                  fontWeight: FontWeight.bold, // Makes text bold
-                  color: Colors.deepPurple,   // Purple color for branding
+                  fontSize: 28,                    // Large text size for title
+                  fontWeight: FontWeight.bold,     // Makes text bold
+                  color: isDarkMode 
+                      ? AppColors.darkPrimary      // Light purple for dark mode
+                      : AppColors.primary,         // Deep purple for light mode
                 ),
                 textAlign: TextAlign.center, // Centers the text
               ),
@@ -37,11 +72,13 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 20),
               
               // SUBTITLE - Descriptive text below title
-              const Text(
+              Text(
                 'Your one-stop shop for everything!',
                 style: TextStyle(
-                  fontSize: 16,           // Smaller text size for subtitle
-                  color: Colors.grey,     // Grey color for subtle appearance
+                  fontSize: 16,                        // Smaller text size for subtitle
+                  color: isDarkMode 
+                      ? AppColors.darkTextSecondary    // Light grey for dark mode
+                      : AppColors.lightTextSecondary,  // Dark grey for light mode
                 ),
                 textAlign: TextAlign.center, // Centers the text
               ),
@@ -58,8 +95,12 @@ class HomeScreen extends StatelessWidget {
                 
                 // BUTTON STYLING - Makes the button look attractive
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple, // Purple background
-                  foregroundColor: Colors.white,      // White text color
+                  backgroundColor: isDarkMode 
+                      ? AppColors.darkPrimary       // Light purple for dark mode
+                      : AppColors.primary,          // Deep purple for light mode
+                  foregroundColor: isDarkMode 
+                      ? Colors.black                // Black text on light purple button
+                      : Colors.white,               // White text on dark purple button
                   
                   // Padding makes the button bigger and easier to tap
                   padding: const EdgeInsets.symmetric(
@@ -82,6 +123,30 @@ class HomeScreen extends StatelessWidget {
                     fontSize: 18,                    // Button text size
                     fontWeight: FontWeight.w600,     // Semi-bold text
                   ),
+                ),
+              ),
+              
+              // SPACING - Adds 20 pixels of vertical space
+              const SizedBox(height: 20),
+              
+              // THEME TOGGLE BUTTON - Alternative way to toggle theme
+              OutlinedButton.icon(
+                onPressed: toggleTheme,
+                icon: Icon(
+                  isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                  color: isDarkMode ? AppColors.darkText : AppColors.lightText,
+                ),
+                label: Text(
+                  isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode',
+                  style: TextStyle(
+                    color: isDarkMode ? AppColors.darkText : AppColors.lightText,
+                  ),
+                ),
+                style: OutlinedButton.styleFrom(
+                  side: BorderSide(
+                    color: isDarkMode ? AppColors.darkText : AppColors.lightText,
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 ),
               ),
             ],
