@@ -73,42 +73,14 @@ class AppColors {
   static const Color darkPrimary = Color(0xFFBB86FC);            // Light purple for dark mode
   
   // =============================================================================
-  // THEME DATA HELPERS
-  // =============================================================================
-  
-  // Get complete light theme
-  static ThemeData get lightTheme => ThemeData(
-    primarySwatch: lightPrimarySwatch,
-    scaffoldBackgroundColor: lightBackground,
-    primaryColor: primary,
-    brightness: Brightness.light,
-    appBarTheme: AppBarTheme(
-      backgroundColor: lightSurface,
-      foregroundColor: lightText,
-      elevation: 1,
-    ),
-  );
-  
-  // Get complete dark theme
-  static ThemeData get darkTheme => ThemeData(
-    primarySwatch: darkPrimarySwatch,
-    scaffoldBackgroundColor: darkBackground,
-    primaryColor: darkPrimary,
-    brightness: Brightness.dark,
-    appBarTheme: AppBarTheme(
-      backgroundColor: darkSurface,
-      foregroundColor: darkText,
-      elevation: 1,
-    ),
-  );
-  
-  // =============================================================================
   // HOW TO USE THESE COLORS
   // =============================================================================
   
   // Example: backgroundColor: AppColors.lightBackground
   // Example: color: AppColors.primary
   // Example: Text('Hello', style: TextStyle(color: AppColors.lightText))
-  // Example: theme: AppColors.lightTheme
-  // Example: darkTheme: AppColors.darkTheme
+  // 
+  // For themes, use the AppTheme class from theme_data.dart:
+  // theme: AppTheme.lightTheme
+  // darkTheme: AppTheme.darkTheme
 }
