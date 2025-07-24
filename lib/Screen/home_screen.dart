@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // Import our custom colors and theme utilities
 
 import '../contants/theme_data.dart';
+import '../widgets/subtitle_text.dart';
 
 // HomeScreen class - This is a StatelessWidget because it doesn't change over time
 class HomeScreen extends StatelessWidget {
@@ -71,15 +72,8 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               // SUBTITLE - Descriptive text below title
-              Text(
-                'Your one-stop shop for everything!',
-                style: TextStyle(
-                  fontSize: 16, // Smaller text size for subtitle
-                  color: AppTheme.getSecondaryTextColor(
-                    context,
-                  ), // Theme-aware secondary text
-                ),
-                textAlign: TextAlign.center, // Centers the text
+              const SubtitleTextWidget(
+                text: 'Your one-stop shop for everything!',
               ),
 
               // SPACING - Adds 40 pixels of vertical space before button
