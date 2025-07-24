@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Screen/home_screen.dart';
-import 'contants/app_colors.dart'; // Import our custom colors
+import 'contants/theme_data.dart'; // Import our theme data
 
 void main() {
   runApp(const MyApp());
@@ -32,11 +32,11 @@ class _MyAppState extends State<MyApp> {
       // Set the title of the app
       title: 'DUKA LETU',
       
-      // LIGHT THEME - Using AppColors theme data
-      theme: AppColors.lightTheme,
+      // LIGHT THEME - Using AppTheme theme data
+      theme: AppTheme.lightTheme,
       
-      // DARK THEME - Using AppColors theme data
-      darkTheme: AppColors.darkTheme,
+      // DARK THEME - Using AppTheme theme data
+      darkTheme: AppTheme.darkTheme,
       
       // Choose which theme to use based on isDarkMode
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
