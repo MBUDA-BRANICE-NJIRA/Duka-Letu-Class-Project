@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Screen/home_screen.dart';
+import 'root_screen.dart';
 import 'contants/theme_data.dart'; // Import our theme data
 
 void main() {
@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
       // Choose which theme to use based on isDarkMode
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
       
-      home: HomeScreen(toggleTheme: toggleTheme, isDarkMode: isDarkMode),
+      home: RootScreen(toggleTheme: toggleTheme, isDarkMode: isDarkMode),
     );
   }
 }
