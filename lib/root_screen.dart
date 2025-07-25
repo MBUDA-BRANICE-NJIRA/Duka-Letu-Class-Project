@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Screen/home_screen.dart';
+import 'Screen/search_screen.dart';
 import 'Screen/cart_screen.dart';
 import 'Screen/profile_screen.dart';
 
@@ -45,6 +46,10 @@ class _RootScreenState extends State<RootScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
           ),
@@ -66,6 +71,7 @@ class _RootScreenState extends State<RootScreen> {
             toggleTheme: widget.toggleTheme,
             isDarkMode: widget.isDarkMode,
           ),
+          const SearchScreen(),
           const CartScreen(),
           const ProfileScreen(),
         ],
