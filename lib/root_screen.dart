@@ -40,6 +40,7 @@ class _RootScreenState extends State<RootScreen> {
             curve: Curves.easeInOut,
           );
         },
+        
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
