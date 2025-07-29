@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               // SUBTITLE - Descriptive text below title
-              const SubtitleTextWidget(),
+              const SubtitleTextWidget(label: '',),
 
               // SPACING - Adds 40 pixels of vertical space before button
               const SizedBox(height: 40),

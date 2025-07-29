@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
 
-/// A widget that displays a subtitle text with a predefined message.
-///
-/// This widget uses the app's theme to style the text and ensures
-/// consistency with the overall design.
 class SubtitleTextWidget extends StatelessWidget {
-  /// Creates a [SubtitleTextWidget].
-  const SubtitleTextWidget({super.key});
+  const SubtitleTextWidget({
+    super.key,
+    required this.label,
+    this.fontSize = 18,
+    this.fontStyle = FontStyle.normal,
+    this.fontWeight = FontWeight.normal,
+    this.color,
+    this.textDecoration = TextDecoration.none,
+  });
 
+  final String label;
+  final double fontSize;
+  final FontStyle fontStyle;
+  final FontWeight? fontWeight;
+  final Color? color;
+  final TextDecoration textDecoration;
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Your one-stop shop for everything!",
-      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            fontSize: 16,
-            color: Theme.of(context).colorScheme.onSurface,
-          ) ??
-          TextStyle(
-            fontSize: 16,
-            color: Theme.of(context).colorScheme.onSurface,
-          ),
-      textAlign: TextAlign.center,
+      label,
+      style: TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+        fontStyle: fontStyle,
+        decoration: textDecoration,
+      ),
     );
   }
 }
