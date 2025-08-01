@@ -3,6 +3,8 @@ import 'root_screen.dart';
 import 'contants/theme_data.dart'; // Import our theme data
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize Firebase before running the app
   runApp(const MyApp());
 }
 
@@ -31,18 +33,17 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false, // Disable debug banner
       // Set the title of the app
       title: 'DUKA LETU',
-      
+
       // LIGHT THEME - Using AppTheme theme data
       theme: AppTheme.lightTheme,
-      
+
       // DARK THEME - Using AppTheme theme data
       darkTheme: AppTheme.darkTheme,
-      
+
       // Choose which theme to use based on isDarkMode
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      
+
       home: RootScreen(toggleTheme: toggleTheme, isDarkMode: isDarkMode),
     );
   }
-  
 }
