@@ -1,10 +1,21 @@
+import 'package:ecomerce_class_app/Screen/Auth/login_screen.dart'
+    show LoginScreen;
+import 'package:ecomerce_class_app/Screen/Auth/register_screen.dart';
+import 'package:ecomerce_class_app/Screen/cart_screen.dart' show CartScreen;
+// import 'package:ecomerce_class_app/Screen/home_screen.dart' show HomeScreen;
+import 'package:ecomerce_class_app/Screen/profile_screen.dart'
+    show ProfileScreen;
+import 'package:ecomerce_class_app/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'root_screen.dart';
 import 'contants/theme_data.dart'; // Import our theme data
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize Firebase before running the app
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -43,7 +54,18 @@ class _MyAppState extends State<MyApp> {
       // Choose which theme to use based on isDarkMode
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
 
-      home: RootScreen(toggleTheme: toggleTheme, isDarkMode: isDarkMode),
+      home: RegisterScreen(),
+      initialRoute: FirebaseAuth.instance.currentUser == null
+          ? '/register'
+          : '/home',
+
+      routes: {
+        'login': (context) => const LoginScreen(),
+        // 'home': (context) => HomeScreen(toggleTheme: () {}, isDarkMode: () {}),
+        'register': (context) => const RegisterScreen(),
+        'cart': (context) => const CartScreen(),
+        'profile': (context) => const ProfileScreen(),
+      },
     );
   }
 }
