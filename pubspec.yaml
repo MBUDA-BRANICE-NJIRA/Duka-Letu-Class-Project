@@ -38,6 +38,8 @@ dependencies:
   shared_preferences: ^2.5.3
   flutter_iconly: ^1.0.2
   firebase_core: ^4.0.0
+  firebase_auth: ^6.0.0
+  cloud_firestore: ^6.0.0
 
 dev_dependencies:
   flutter_test:
