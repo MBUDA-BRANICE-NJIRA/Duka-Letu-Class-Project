@@ -8,7 +8,7 @@ import 'package:ecomerce_class_app/Screen/profile_screen.dart'
 import 'package:ecomerce_class_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'root_screen.dart';
+// import 'root_screen.dart';
 import 'contants/theme_data.dart'; // Import our theme data
 import 'package:firebase_auth/firebase_auth.dart';
 
